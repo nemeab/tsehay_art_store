@@ -1,3 +1,4 @@
+import 'package:art_store/screen/account.dart';
 import 'package:art_store/screen/products.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(),
-      home: const Products(),
+      home: const Account(),
     );
   }
 }
