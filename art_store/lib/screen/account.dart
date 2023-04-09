@@ -1,11 +1,54 @@
+import 'package:art_store/screen/login.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class Account extends StatelessWidget {
-  const Account({super.key});
+class Account extends StatefulWidget {
+  Account({super.key});
+  static const String id = 'account_screen';
+
+  @override
+  State<Account> createState() => _AccountState();
+}
+
+class _AccountState extends State<Account> {
+  final _auth = FirebaseAuth.instance;
+
+  late User loggedInUser;
+
+  @override
+  void initState() {
+    super.initState();
+
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final User = await _auth.currentUser;
+      if (User != null) {
+        loggedInUser = User;
+        print(loggedInUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: null,
+        actions: <Widget>[
+          IconButton(
+              onPressed: () {
+                _auth.signOut();
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.logout))
+        ],
+      ),
       body: Center(
         child: SafeArea(
           child: Container(
