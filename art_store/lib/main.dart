@@ -1,4 +1,6 @@
+import 'package:art_store/screen/home.dart';
 import 'package:art_store/screen/products.dart';
+import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,9 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(),
-      home: const Products(),
+      home: const Base(),
+
     );
   }
 }
