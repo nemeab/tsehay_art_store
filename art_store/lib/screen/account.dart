@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:art_store/screen/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -33,10 +34,17 @@ class _AccountState extends State<Account> {
       print(e);
     }
   }
+=======
+import 'package:flutter/material.dart';
+
+class Account extends StatelessWidget {
+  const Account({super.key});
+>>>>>>> a36ee9f85a7629eb18e0d216c02d4de7a2877a59
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: null,
@@ -49,6 +57,8 @@ class _AccountState extends State<Account> {
               icon: const Icon(Icons.logout))
         ],
       ),
+=======
+>>>>>>> a36ee9f85a7629eb18e0d216c02d4de7a2877a59
       body: Center(
         child: SafeArea(
           child: Container(
