@@ -1,4 +1,7 @@
-import 'package:art_store/screen/products.dart';
+import 'package:art_store/screen/account.dart';
+// import 'package:art_store/screen/products.dart';
+import 'package:art_store/screen/welcome.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:art_store/screen/registration.dart';
 import 'package:art_store/screen/login.dart';
@@ -17,7 +20,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tsehay Art Store',
       theme: ThemeData(),
-      home: const Products(),
+      initialRoute: WelcomeScreen.id,
+      routes: {
+        WelcomeScreen.id: (context) => const WelcomeScreen(),
+        LoginScreen.id: (context) => const LoginScreen(),
+        RegistrationScreen.id: (context) => const RegistrationScreen(),
+        Account.id: (context) => Account()
+      },
     );
   }
 }
