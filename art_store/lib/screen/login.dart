@@ -1,4 +1,7 @@
-import 'package:art_store/screen/account.dart';
+// import 'package:art_store/screen/account.dart';
+import 'package:art_store/constants/constants.dart';
+import 'package:art_store/screen/home.dart';
+import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -22,7 +25,7 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.LightGray,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -42,6 +45,7 @@ class LoginScreenState extends State<LoginScreen> {
                 height: 48.0,
               ),
               TextField(
+                style: const TextStyle(color: Colors.white),
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -71,6 +75,7 @@ class LoginScreenState extends State<LoginScreen> {
                 height: 8.0,
               ),
               TextField(
+                style: const TextStyle(color: Colors.white),
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -115,7 +120,7 @@ class LoginScreenState extends State<LoginScreen> {
                         final user = await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
                         if (user != null) {
-                          Navigator.pushNamed(context, Account.id);
+                          Navigator.pushNamed(context, Base.id);
                         }
                         setState(() {
                           showSpinner = false;

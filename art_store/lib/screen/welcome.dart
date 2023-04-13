@@ -1,6 +1,9 @@
+import 'package:art_store/constants/constants.dart';
 import 'package:art_store/screen/login.dart';
 import 'package:flutter/material.dart';
 import 'package:art_store/screen/registration.dart';
+
+import '../widgets/Bottom_navigation_bar.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -32,7 +35,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.LightGray,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -77,6 +80,15 @@ class WelcomeScreenState extends State<WelcomeScreen>
                     'Log In',
                   ),
                 ),
+              ),
+            ),
+            const Center(
+              child: Text(
+                'or',
+                style: TextStyle(
+                    color: Color(0xffdfd38b),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
               ),
             ),
             Padding(

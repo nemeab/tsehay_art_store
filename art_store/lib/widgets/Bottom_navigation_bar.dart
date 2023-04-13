@@ -4,20 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:art_store/constants/constants.dart';
 
-
-
 class Base extends StatefulWidget {
   const Base({super.key});
+  static const id = 'bottom_navigation';
 
   @override
   State<Base> createState() => _BaseState();
 }
+
 class _BaseState extends State<Base> {
   int _currentindex = 0;
   final tabs = [
-    Home_page(),
-    Community(),
-    Community(),
+    const Home_page(),
+    const Community(),
+    const Community(),
     // RepositoryProvider(
     //   create: (context) => Foodrepositery(),
     //   child: const Foo,
@@ -26,17 +26,25 @@ class _BaseState extends State<Base> {
   @override
   Widget build(BuildContext context) {
     final items = <Widget>[
-      Icon(Icons.home, size: 30,),
-      Icon(Icons.ice_skating, size: 30,),
-      Icon(Icons.home, size: 30,)
+      Icon(
+        Icons.home,
+        size: 30,
+      ),
+      Icon(
+        Icons.ice_skating,
+        size: 30,
+      ),
+      Icon(
+        Icons.home,
+        size: 30,
+      )
     ];
     return Scaffold(
       extendBody: true,
       body: tabs[_currentindex],
       bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          iconTheme: IconThemeData(color: AppColors.LightGray)
-        ),
+        data: Theme.of(context)
+            .copyWith(iconTheme: IconThemeData(color: AppColors.LightGray)),
         child: CurvedNavigationBar(
           color: AppColors.DarkGray,
           buttonBackgroundColor: AppColors.Gold,
