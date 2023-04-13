@@ -39,6 +39,7 @@ class Home_page extends StatelessWidget {
                             text: 'Tsehay',
                           ),
                           Small_text(text: 'ART STORE'),
+                          Small_text(text: 'BUY WHAT U WANT')
                         ],
                       ),
                       Center(
