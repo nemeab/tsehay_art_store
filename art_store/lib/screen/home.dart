@@ -8,6 +8,8 @@ import '../widgets/Hot_products.dart';
 class Home_page extends StatelessWidget {
   const Home_page({Key? key}) : super(key: key);
 
+  static const id = 'homescreen';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

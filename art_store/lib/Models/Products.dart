@@ -30,4 +30,11 @@ class  Products {
     json['description'] = description;
     return json;
   }
+  static List productList(List product) {
+    List products = [];
+    for (var i = 0; i < product.length; i++) {
+      products.add(Products.fromJson(product[i]));
+    }
+    return products;
+  }
 }

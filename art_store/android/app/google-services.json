@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1098341305951",
+    "project_id": "art-store-a683b",
+    "storage_bucket": "art-store-a683b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098341305951:android:11ebf89dab0df3eb7995ea",
+        "android_client_info": {
+          "package_name": "com.Natnael.art_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098341305951-80f7uf5iest4nme61in0ijbovjebrvhm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm8KZjqbtyf1jDDU_qvzRPlbE8GnO2kIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098341305951-80f7uf5iest4nme61in0ijbovjebrvhm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
