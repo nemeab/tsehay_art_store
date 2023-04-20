@@ -26,15 +26,15 @@ class _BaseState extends State<Base> {
   @override
   Widget build(BuildContext context) {
     final items = <Widget>[
-      Icon(
+      const Icon(
         Icons.home,
         size: 30,
       ),
-      Icon(
+      const Icon(
         Icons.ice_skating,
         size: 30,
       ),
-      Icon(
+      const Icon(
         Icons.home,
         size: 30,
       )
