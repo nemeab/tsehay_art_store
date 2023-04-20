@@ -38,7 +38,7 @@ class _BaseState extends State<Base> {
         size: 30,
       ),
       const Icon(
-        Icons.home,
+        Icons.person,
         size: 30,
       )
     ];

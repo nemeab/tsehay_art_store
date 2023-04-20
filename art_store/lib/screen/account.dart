@@ -1,6 +1,7 @@
 import 'package:art_store/screen/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:art_store/constants/constants.dart';
 
 class Account extends StatefulWidget {
   Account({super.key});
@@ -38,7 +39,7 @@ class _AccountState extends State<Account> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: AppColors.LightGray,
         leading: null,
         actions: <Widget>[
           IconButton(
@@ -53,7 +54,7 @@ class _AccountState extends State<Account> {
         child: SafeArea(
           child: Container(
             width: double.infinity,
-            color: Colors.black,
+            color: AppColors.LightGray,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -80,7 +81,7 @@ class _AccountState extends State<Account> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xffdfd38b),
-                      foregroundColor: Colors.black,
+                      foregroundColor: AppColors.LightGray,
                     ),
                     onPressed: () {},
                     child: Row(
