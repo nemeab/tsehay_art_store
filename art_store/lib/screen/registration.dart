@@ -1,5 +1,4 @@
 import 'package:art_store/constants/constants.dart';
-import 'package:art_store/screen/account.dart';
 import 'package:art_store/screen/home.dart';
 import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +20,29 @@ class RegistrationScreenState extends State<RegistrationScreen> {
   late String email;
   late String password;
   late String confirmPassword;
+  bool _obscureText = true;
+
+  void _passwordhide() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
+  void signup() async {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (BuildContext context) => Home_page(
+          name: fullName,
+        ),
+      ),
+      (Route<dynamic> route) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.LightGray,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
@@ -45,6 +63,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                 height: 48.0,
               ),
               TextField(
+                style: const TextStyle(color: AppColors.Gold),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   fullName = value;
@@ -56,6 +75,10 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  ),
+                  suffixIcon: Icon(
+                    Icons.person,
+                    color: AppColors.Gold,
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderSide:
@@ -73,6 +96,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                 height: 8.0,
               ),
               TextField(
+                style: const TextStyle(color: AppColors.Gold),
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -86,6 +110,10 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
+                  suffixIcon: Icon(
+                    Icons.email,
+                    color: AppColors.Gold,
+                  ),
                   enabledBorder: OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffdfd38b), width: 1.0),
@@ -101,26 +129,34 @@ class RegistrationScreenState extends State<RegistrationScreen> {
               const SizedBox(
                 height: 8.0,
               ),
-              TextField(
-                obscureText: true,
+              TextFormField(
+                obscureText: _obscureText,
+                style: const TextStyle(color: AppColors.Gold),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   password = value;
                 },
-                decoration: const InputDecoration(
-                  hintStyle: TextStyle(color: Color(0xffdfd38b)),
+                decoration: InputDecoration(
+                  hintStyle: const TextStyle(color: Color(0xffdfd38b)),
                   hintText: 'Enter your new password.',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 20.0),
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
-                  enabledBorder: OutlineInputBorder(
+                  suffixIcon: IconButton(
+                    color: AppColors.Gold,
+                    icon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: _passwordhide,
+                  ),
+                  enabledBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffdfd38b), width: 1.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffdfd38b), width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
@@ -131,25 +167,33 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                 height: 8.0,
               ),
               TextField(
-                obscureText: true,
+                obscureText: _obscureText,
+                style: const TextStyle(color: AppColors.Gold),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   confirmPassword = value;
                 },
-                decoration: const InputDecoration(
-                  hintStyle: TextStyle(color: Color(0xffdfd38b)),
+                decoration: InputDecoration(
+                  hintStyle: const TextStyle(color: Color(0xffdfd38b)),
                   hintText: 'Confirm you password.',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 20.0),
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
-                  enabledBorder: OutlineInputBorder(
+                  suffixIcon: IconButton(
+                    color: AppColors.Gold,
+                    icon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: _passwordhide,
+                  ),
+                  enabledBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffdfd38b), width: 1.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffdfd38b), width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),

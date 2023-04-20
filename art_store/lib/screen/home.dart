@@ -1,14 +1,15 @@
 import 'package:art_store/constants/Big_text.dart';
 import 'package:flutter/material.dart';
 import 'package:art_store/constants/constants.dart';
-import 'package:art_store/widgets/Bottom_navigation_bar.dart';
+// import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import '../constants/small_text.dart';
 import '../widgets/Hot_products.dart';
 
 class Home_page extends StatelessWidget {
-  const Home_page({Key? key}) : super(key: key);
+  const Home_page({Key? key, required this.name}) : super(key: key);
 
   static const id = 'homescreen';
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class Home_page extends StatelessWidget {
       backgroundColor: AppColors.DarkGray,
       body: ListView(children: [
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -29,35 +30,33 @@ class Home_page extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                child: Container(
-                  margin: const EdgeInsets.only(top: 25, bottom: 15),
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Big_text(
-                            text: 'Tsehay',
-                          ),
-                          Small_text(text: 'ART STORE'),
-                        ],
-                      ),
-                      Center(
-                        child: Container(
-                          width: 45,
-                          height: 45,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: AppColors.Gold),
-                          child: Icon(
-                            Icons.search,
-                            color: AppColors.LightGray,
-                          ),
+                margin: const EdgeInsets.only(top: 25, bottom: 15),
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Big_text(
+                          text: 'Tsehay',
                         ),
-                      )
-                    ],
-                  ),
+                        Small_text(text: 'ART STORE'),
+                      ],
+                    ),
+                    Center(
+                      child: Container(
+                        width: 45,
+                        height: 45,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: AppColors.Gold),
+                        child: const Icon(
+                          Icons.search,
+                          color: AppColors.LightGray,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
               const Hot_products(),
