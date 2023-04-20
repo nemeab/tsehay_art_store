@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../widgets/Bottom_navigation_bar.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -115,7 +117,7 @@ class LoginScreenState extends State<LoginScreen> {
                         final user = await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
                         if (user != null) {
-                          Navigator.pushNamed(context, Account.id);
+                          Navigator.pushNamed(context, Base.id);
                         }
                         setState(() {
                           showSpinner = false;

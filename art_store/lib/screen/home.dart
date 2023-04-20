@@ -14,8 +14,8 @@ class Home_page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.DarkGray,
-      body: ListView(
-        children: [Container(
+      body: ListView(children: [
+        Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -198,11 +198,10 @@ class Home_page extends StatelessWidget {
                   ],
                 ),
               ),
-
             ],
           ),
-        ),]
-      ),
+        ),
+      ]),
     );
   }
 }

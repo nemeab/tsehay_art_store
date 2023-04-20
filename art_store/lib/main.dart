@@ -1,4 +1,3 @@
-
 import 'package:art_store/screen/home.dart';
 import 'package:art_store/screen/products.dart';
 import 'package:art_store/widgets/Bottom_navigation_bar.dart';
@@ -27,6 +26,7 @@ class MyApp extends StatelessWidget {
       initialRoute: WelcomeScreen.id,
       routes: {
         WelcomeScreen.id: (context) => const WelcomeScreen(),
+        Base.id: (context) => const Base(),
         LoginScreen.id: (context) => const LoginScreen(),
         RegistrationScreen.id: (context) => const RegistrationScreen(),
         Account.id: (context) => Account(),
