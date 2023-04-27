@@ -1,3 +1,4 @@
+import 'package:art_store/Models/registration_model.dart';
 import 'package:art_store/constants/constants.dart';
 import 'package:art_store/screen/account.dart';
 import 'package:art_store/screen/home.dart';
@@ -7,7 +8,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class RegistrationScreen extends StatefulWidget {
-  const RegistrationScreen({super.key});
+  final Registration? registration;
+  const RegistrationScreen({Key? key, this.registration}) : super(key: key);
+
   static const String id = 'signup_screen';
   @override
   RegistrationScreenState createState() => RegistrationScreenState();

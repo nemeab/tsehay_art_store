@@ -26,12 +26,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(),
       initialRoute: WelcomeScreen.id,
       routes: {
-        ///Base.id: (context) => const Base(),
-        // WelcomeScreen.id: (context) => const WelcomeScreen(),
-        /// LoginScreen.id: (context) => const LoginScreen(),
-        //   RegistrationScreen.id: (context) => const RegistrationScreen(),
-        //   Account.id: (context) => Account(),
-        //   Home_page.id: (context) => const Home_page(),
+        Base.id: (context) => const Base(),
+        WelcomeScreen.id: (context) => const WelcomeScreen(),
+        LoginScreen.id: (context) => const LoginScreen(),
+        RegistrationScreen.id: (context) => const RegistrationScreen(),
+        Account.id: (context) => Account(),
+        Home_page.id: (context) => const Home_page(),
         Community.id: (context) => const Community(),
       },
     );
