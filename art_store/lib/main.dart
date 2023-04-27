@@ -1,6 +1,7 @@
 import 'package:art_store/screen/account.dart';
 import 'package:art_store/screen/home.dart';
 import 'package:art_store/screen/otherfunctionality.dart';
+import 'package:art_store/screen/products.dart';
 import 'package:art_store/screen/reset_password.dart';
 import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         LoginScreen.id: (context) => const LoginScreen(),
         RegistrationScreen.id: (context) => const RegistrationScreen(),
         Account.id: (context) => Account(),
+        Product_screen.id: (context) => const Product_screen(),
         Home_page.id: (context) => const Home_page(
               name: '',
             ),

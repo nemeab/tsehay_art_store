@@ -7,6 +7,8 @@ import 'package:bloc/bloc.dart';
 
 import '../services/api_service.dart';
 
+part 'art_event.dart';
+
 class ArtBloc extends Bloc<ArtEvent, ArtState> {
   List history = [];
   dynamic _service = Service();

@@ -1,5 +1,6 @@
 import 'package:art_store/screen/account.dart';
 import 'package:art_store/screen/community.dart';
+import 'package:art_store/screen/history.dart';
 import 'package:art_store/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -21,8 +22,9 @@ class _BaseState extends State<Base> {
     const Home_page(
       name: 'natnael',
     ),
-    const Community(),
+    const History(),
     Account(),
+
     // RepositoryProvider(
     //   create: (context) => Foodrepositery(),
     //   child: const Foo,
@@ -36,7 +38,7 @@ class _BaseState extends State<Base> {
         size: 30,
       ),
       const Icon(
-        Icons.ice_skating,
+        Icons.history,
         size: 30,
       ),
       const Icon(
