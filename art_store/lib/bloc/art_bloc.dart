@@ -1,15 +1,22 @@
-// import 'dart:async';
-//
-// import 'package:bloc/bloc.dart';
-// import 'package:meta/meta.dart';
-//
-// part 'art_event.dart';
-// part 'art_state.dart';
-//
-// class ArtBloc extends Bloc<ArtEvent, ArtState> {
-//   ArtBloc() : super(ArtInitial()) {
-//     on<ArtEvent>((event, emit) {
-//       // TODO: implement event handler
-//     });
-//   }
-// }
+import 'dart:developer';
+
+import 'package:art_store/Models/Products.dart';
+import 'package:art_store/bloc/art_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
+
+import '../services/api_service.dart';
+
+class ArtBloc extends Bloc<ArtEvent, ArtState> {
+  List history = [];
+  dynamic _service = Service();
+  ArtBloc() : super(ArtInitial()) {
+    on<GetDataButtonPressed>((event, emit) async {
+      emit(ArtLoadingState());
+      final activity = await product_api().fetchActivity();
+      emit(ArtSuccessState(activity!, _service.read_item()));
+    });
+    on<HistoryEvent>((event, emit) =>
+        {history.add(event.data), _service.save_item(event.data)});
+  }
+}

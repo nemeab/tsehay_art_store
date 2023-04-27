@@ -6,12 +6,12 @@ class Big_text extends StatelessWidget {
   final String text;
   double size;
   TextOverflow overflow;
-  Big_text({
-    this.color = const Color(0xffdfd18a),
-  required this.text,
-    this.size = 20,
-    this.overflow = TextOverflow.ellipsis
-});
+  Big_text(
+      {super.key,
+      this.color = const Color(0xffdfd18a),
+      required this.text,
+      this.size = 20,
+      this.overflow = TextOverflow.ellipsis});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class Big_text extends StatelessWidget {
       maxLines: 1,
       overflow: overflow,
       style: TextStyle(
-          color: color,
-          fontWeight: FontWeight.w400,
+        color: color,
+        fontWeight: FontWeight.w400,
         fontSize: size,
       ),
     );

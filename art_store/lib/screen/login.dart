@@ -1,7 +1,12 @@
-import 'package:art_store/screen/account.dart';
+// import 'package:art_store/screen/account.dart';
+import 'package:art_store/constants/constants.dart';
+import 'package:art_store/screen/registration.dart';
+import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:art_store/screen/otherfunctionality.dart';
+// import 'package:art_store/screen/reset_password.dart';
 
 import '../widgets/Bottom_navigation_bar.dart';
 
@@ -20,11 +25,19 @@ class LoginScreenState extends State<LoginScreen> {
   bool showSpinner = false;
   late String email;
   late String password;
+  bool _obscureText = true;
+
+  void _passwordhide() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: true,
+      backgroundColor: AppColors.LightGray,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -44,6 +57,7 @@ class LoginScreenState extends State<LoginScreen> {
                 height: 48.0,
               ),
               TextField(
+                style: const TextStyle(color: AppColors.Gold),
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -51,11 +65,15 @@ class LoginScreenState extends State<LoginScreen> {
                 },
                 decoration: const InputDecoration(
                   hintStyle: TextStyle(color: Color(0xffdfd38b)),
-                  hintText: 'Enter your email',
+                  hintText: 'Email',
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  ),
+                  suffixIcon: Icon(
+                    Icons.email,
+                    color: AppColors.Gold,
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderSide:
@@ -63,6 +81,46 @@ class LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Color(0xffdfd38b), width: 2.0),
+                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              TextFormField(
+                obscureText: _obscureText,
+                style: TextStyle(color: AppColors.Gold),
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  password = value;
+                },
+                decoration: InputDecoration(
+                  hintStyle: const TextStyle(color: Color(0xffdfd38b)),
+                  hintText: 'Enter Password.',
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 20.0),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  ),
+                  prefixIcon: const Icon(
+                    Icons.lock,
+                    color: AppColors.Gold,
+                  ),
+                  suffixIcon: IconButton(
+                    color: AppColors.Gold,
+                    icon: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off),
+                    onPressed: _passwordhide,
+                  ),
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Color(0xffdfd38b), width: 1.0),
+                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  ),
+                  focusedBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffdfd38b), width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
@@ -72,35 +130,8 @@ class LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 8.0,
               ),
-              TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  password = value;
-                },
-                decoration: const InputDecoration(
-                  hintStyle: TextStyle(color: Color(0xffdfd38b)),
-                  hintText: 'Enter your password.',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color(0xffdfd38b), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color(0xffdfd38b), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 24.0,
-              ),
+              const Otherfunctionality(),
+              // forgetpassword(context),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Material(
@@ -119,12 +150,12 @@ class LoginScreenState extends State<LoginScreen> {
                         if (user != null) {
                           Navigator.pushNamed(context, Base.id);
                         }
-                        setState(() {
-                          showSpinner = false;
-                        });
                       } catch (e) {
                         print(e);
                       }
+                      setState(() {
+                        showSpinner = false;
+                      });
                     },
                     minWidth: 200.0,
                     height: 42.0,

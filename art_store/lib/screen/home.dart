@@ -1,14 +1,18 @@
+//import 'dart:html';
+
 import 'package:art_store/constants/Big_text.dart';
+import 'package:art_store/screen/products.dart';
 import 'package:flutter/material.dart';
 import 'package:art_store/constants/constants.dart';
-
+// import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import '../constants/small_text.dart';
 import '../widgets/Hot_products.dart';
 
 class Home_page extends StatelessWidget {
-  const Home_page({Key? key}) : super(key: key);
+  const Home_page({Key? key, required this.name}) : super(key: key);
 
   static const id = 'homescreen';
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -56,25 +60,113 @@ class Home_page extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15),
                               color: AppColors.Gold),
                         ),
+                      ),
+                      //Small_text(text: 'ART STORE'),
+                    ],
+                  ),
+                ),
+              ),
+              const Hot_products(),
+              // const Padding(
+              //   padding: EdgeInsets.only(top: 20, right: 380, bottom: 20),
+              //   child: Text(
+              //     'Catagory',
+              //   ),
+              // ),
+              Container(
+                color: Colors.transparent,
+                height: 50,
+                child: Column(
+                  children: const [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Catagory',
+                      style: TextStyle(color: AppColors.Gold, fontSize: 20),
+                    ),
+                  ],
+                ),
+              ),
+              // Container(
+              //   height: 700,
+              //   child: ListView.builder(
+              //       itemCount: 10,
+              //       itemBuilder: (context, index) {
+              //         return Container(
+              //           width: 120,
+              //           height: 120,
+              //           margin: EdgeInsets.symmetric(horizontal: 20),
+              //           child: Row(
+              //             children: [
+              //               Container(
+              //                 decoration: BoxDecoration(
+              //                     borderRadius: BorderRadius.circular(30),
+              //                     color: Colors.amber,
+              //                     image: DecorationImage(
+              //                         image:
+              //                             AssetImage("images/sculpt_1.jpg"))),
+              //               )
+              //             ],
+              //           ),
+              //         );
+              //       }),
+              // ),
+              Container(
+                height: 100,
+                width: 400,
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: const Color(0xff3e3e40),
+                ),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Product_screen()),
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      Container(
+                        height: 70,
+                        width: 100,
+                        child: const Image(
+                          image: AssetImage('art_equpiments.png'),
+                          height: 70,
+                          width: 100,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Big_text(text: 'Art Equpiments'),
+                            Small_text(
+                                text: 'Buy art Equpiments for you next post')
+                          ],
+                        ),
                       )
                     ],
                   ),
                 ),
               ),
-              Hot_products(),
-              Padding(
-                padding: const EdgeInsets.only(top: 20, right: 380, bottom: 20),
-                child: Big_text(
-                  text: 'Catagory',
-                ),
-              ),
               Container(
                 height: 100,
                 width: 400,
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Color(0xff3e3e40),
+                  color: const Color(0xff3e3e40),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,10 +189,10 @@ class Home_page extends StatelessWidget {
               Container(
                 height: 100,
                 width: 400,
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Color(0xff3e3e40),
+                  color: const Color(0xff3e3e40),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -120,84 +212,58 @@ class Home_page extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                height: 100,
-                width: 400,
-                margin: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Color(0xff3e3e40),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      height: 70,
-                      width: 100,
-                      color: AppColors.DarkGray,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Big_text(text: 'PENCIL'),
-                        Small_text(text: 'fghjfgjfjhjhjklhklhjlkhjlkhfgjfgj')
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                height: 100,
-                width: 400,
-                margin: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Color(0xff3e3e40),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      height: 70,
-                      width: 100,
-                      color: AppColors.DarkGray,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Big_text(text: 'PENCIL'),
-                        Small_text(text: 'fghjfgjfjhjhjklhklhjlkhjlkhfgjfgj')
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                height: 100,
-                width: 400,
-                margin: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Color(0xff3e3e40),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      height: 70,
-                      width: 100,
-                      color: AppColors.DarkGray,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Big_text(text: 'PENCIL'),
-                        Small_text(text: 'fghjfgjfjhjhjklhklhjlkhjlkhfgjfgj')
-                      ],
-                    )
-                  ],
-                ),
-              ),
+              // Container(
+              //   height: 100,
+              //   width: 400,
+              //   margin: const EdgeInsets.all(10),
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(30),
+              //     color: const Color(0xff3e3e40),
+              //   ),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //     children: [
+              //       Container(
+              //         height: 70,
+              //         width: 100,
+              //         color: AppColors.DarkGray,
+              //       ),
+              //       Column(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         children: [
+              //           Big_text(text: 'PENCIL'),
+              //           Small_text(text: 'fghjfgjfjhjhjklhklhjlkhjlkhfgjfgj')
+              //         ],
+              //       )
+              //     ],
+              //   ),
+              // ),
+              // Container(
+              //   height: 100,
+              //   width: 400,
+              //   margin: const EdgeInsets.all(10),
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(30),
+              //     color: const Color(0xff3e3e40),
+              //   ),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //     children: [
+              //       Container(
+              //         height: 70,
+              //         width: 100,
+              //         color: AppColors.DarkGray,
+              //       ),
+              //       Column(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         children: [
+              //           Big_text(text: 'PENCIL'),
+              //           Small_text(text: 'fghjfgjfjhjhjklhklhjlkhjlkhfgjfgj')
+              //         ],
+              //       )
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),
