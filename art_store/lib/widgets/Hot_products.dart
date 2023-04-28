@@ -64,7 +64,8 @@ class _Hot_productsState extends State<Hot_products> {
       Container(
         child: Image(
           image: AssetImage('images/sculpt_2.jpg'),
-          //height: 220,
+          height: 220,
+          width: 200,
         ),
         height: 220,
         margin: const EdgeInsets.only(left: 20, right: 20),
