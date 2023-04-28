@@ -23,17 +23,17 @@ class _HistoryPageState extends State<History> {
       backgroundColor: Colors.white,
       body: BlocBuilder<ArtBloc, ArtState>(
         builder: (context, state) {
-          if (state is ArtInitial) {
-            return const Center(
-                child: Text(
-              "Nothing On Cart\n TOTAL: 0\$",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w900,
-              ),
-            ));
-          }
+          // if (state is ArtInitial) {
+          //   return const Center(
+          //       child: Text(
+          //     "Nothing On Cart\n TOTAL: 0\$",
+          //     textAlign: TextAlign.center,
+          //     style: TextStyle(
+          //       fontSize: 20,
+          //       fontWeight: FontWeight.w900,
+          //     ),
+          //   ));
+          // }
           if (state is ArtLoadingState) {
             return const Center(
               child: CircularProgressIndicator(),

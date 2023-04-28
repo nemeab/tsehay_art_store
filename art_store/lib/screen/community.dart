@@ -1,3 +1,5 @@
+import 'package:art_store/constants/Big_text.dart';
+import 'package:art_store/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class Community extends StatelessWidget {
@@ -5,6 +7,9 @@ class Community extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.cyan,);
+    return Container(
+      color: AppColors.DarkGray,
+      child: Center(child: Big_text(text: 'NO community for now')),
+    );
   }
 }

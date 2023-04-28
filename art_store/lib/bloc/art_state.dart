@@ -2,12 +2,6 @@ import 'dart:developer';
 
 abstract class ArtState {}
 
-class ArtInitial extends ArtState {
-  @override
-  // TODO: implement props
-  List<Object> get props => [];
-}
-
 class ArtLoadingState extends ArtState {
   @override
   // TODO: implement props

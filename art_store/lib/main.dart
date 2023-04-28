@@ -8,6 +8,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:art_store/screen/registration.dart';
 import 'package:art_store/screen/login.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc/art_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,22 +23,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Tsehay Art Store',
-      theme: ThemeData(),
-      initialRoute: LoginScreen.id,
-      routes: {
-        Base.id: (context) => const Base(),
-        LoginScreen.id: (context) => const LoginScreen(),
-        RegistrationScreen.id: (context) => const RegistrationScreen(),
-        Account.id: (context) => Account(),
-        Product_screen.id: (context) => const Product_screen(),
-        Home_page.id: (context) => const Home_page(
-              name: '',
-            ),
-        ResetPassword.id: (context) => const ResetPassword(),
-        Otherfunctionality.id: (context) => const Otherfunctionality()
-      },
+    return BlocProvider(
+      create: (context) => ArtBloc(),
+      child: MaterialApp(
+        title: 'Tsehay Art Store',
+        theme: ThemeData(),
+        initialRoute: LoginScreen.id,
+        routes: {
+          Base.id: (context) => const Base(),
+          LoginScreen.id: (context) => const LoginScreen(),
+          RegistrationScreen.id: (context) => const RegistrationScreen(),
+          Account.id: (context) => Account(),
+          Product_screen.id: (context) => const Product_screen(),
+          Home_page.id: (context) => const Home_page(
+                name: '',
+              ),
+          ResetPassword.id: (context) => const ResetPassword(),
+          Otherfunctionality.id: (context) => const Otherfunctionality()
+        },
+      ),
     );
   }
 }

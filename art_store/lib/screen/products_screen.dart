@@ -13,23 +13,24 @@ class Product_screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<ArtBloc, ArtState>(
-        listener: (UpdateBloc, UpdateState) {
+        listener: (ArtBloc, ArtState) {
           print(State);
         },
         builder: (context, state) {
-          if (state is ArtInitial) {
-            return Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              alignment: Alignment.center,
-              child: ElevatedButton(
-                  onPressed: () {
-                    BlocProvider.of<ArtBloc>(context)
-                        .add(GetDataButtonPressed());
-                  },
-                  child: const Text('Get Activity')),
-            );
-          } else if (state is ArtLoadingState) {
+          // if (state is ArtInitial) {
+          //   return Container(
+          //     height: MediaQuery.of(context).size.height,
+          //     width: MediaQuery.of(context).size.width,
+          //     alignment: Alignment.center,
+          //     child: ElevatedButton(
+          //         onPressed: () {
+          //           BlocProvider.of<ArtBloc>(context)
+          //               .add(GetDataButtonPressed());
+          //         },
+          //         child: const Text('Get Activity')),
+          //   );
+          //}
+          if (state is ArtLoadingState) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ArtFailState) {
             return Text(state.message);

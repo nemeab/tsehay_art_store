@@ -1,6 +1,7 @@
 //import 'dart:html';
 
 import 'package:art_store/constants/Big_text.dart';
+import 'package:art_store/screen/community.dart';
 import 'package:art_store/screen/products.dart';
 import 'package:flutter/material.dart';
 import 'package:art_store/constants/constants.dart';
@@ -122,11 +123,8 @@ class Home_page extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Product_screen()),
-                    );
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => Product_screen()));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -168,22 +166,28 @@ class Home_page extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   color: const Color(0xff3e3e40),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      height: 70,
-                      width: 100,
-                      color: AppColors.DarkGray,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Big_text(text: 'PENCIL'),
-                        Small_text(text: 'fghjfgjfjhjhjklhklhjlkhjlkhfgjfgj')
-                      ],
-                    )
-                  ],
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Community()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: 70,
+                        width: 100,
+                        color: AppColors.DarkGray,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Big_text(text: 'Community'),
+                          Small_text(text: 'Chat Here')
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(

@@ -12,7 +12,7 @@ part 'art_event.dart';
 class ArtBloc extends Bloc<ArtEvent, ArtState> {
   List history = [];
   dynamic _service = Service();
-  ArtBloc() : super(ArtInitial()) {
+  ArtBloc() : super(ArtLoadingState()) {
     on<GetDataButtonPressed>((event, emit) async {
       emit(ArtLoadingState());
       final activity = await product_api().fetchActivity();
