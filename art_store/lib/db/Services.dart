@@ -8,19 +8,19 @@ class Service {
     _repository = Repository();
   }
 
-  save_item(Products product) async {
+  save_product(Products product) async {
     return await _repository!.insertData('product', product.toJson());
   }
 
-  read_item() async {
+  read_product() async {
     return await _repository!.readData('product');
   }
 
-  update_item(Products product) async {
+  update_product(Products product) async {
     return await _repository!.updateData('product', product.toJson());
   }
 
-  delete_item(dispatchId) async {
+  delete_product(dispatchId) async {
     return await _repository!.deleteData('product', dispatchId);
   }
 }

@@ -5,7 +5,7 @@ import 'package:art_store/screen/community.dart';
 import 'package:art_store/screen/products.dart';
 import 'package:flutter/material.dart';
 import 'package:art_store/constants/constants.dart';
-// import 'package:art_store/widgets/Bottom_navigation_bar.dart';
+import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import '../constants/small_text.dart';
 import '../widgets/Hot_products.dart';
 
@@ -89,30 +89,6 @@ class Home_page extends StatelessWidget {
                   ],
                 ),
               ),
-              // Container(
-              //   height: 700,
-              //   child: ListView.builder(
-              //       itemCount: 10,
-              //       itemBuilder: (context, index) {
-              //         return Container(
-              //           width: 120,
-              //           height: 120,
-              //           margin: EdgeInsets.symmetric(horizontal: 20),
-              //           child: Row(
-              //             children: [
-              //               Container(
-              //                 decoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(30),
-              //                     color: Colors.amber,
-              //                     image: DecorationImage(
-              //                         image:
-              //                             AssetImage("images/sculpt_1.jpg"))),
-              //               )
-              //             ],
-              //           ),
-              //         );
-              //       }),
-              // ),
               Container(
                 height: 100,
                 width: 400,
@@ -136,9 +112,9 @@ class Home_page extends StatelessWidget {
                         height: 70,
                         width: 100,
                         child: const Image(
-                          image: AssetImage('art_equpiments.png'),
-                          height: 70,
-                          width: 100,
+                          image: AssetImage('arts.png'),
+                          height: 69,
+                          width: 99,
                         ),
                       ),
                       const SizedBox(
@@ -178,6 +154,12 @@ class Home_page extends StatelessWidget {
                         height: 70,
                         width: 100,
                         color: AppColors.DarkGray,
+                        child: const Image(
+                          image: AssetImage(
+                              'c659fc6221f6cdb2f78668b4cfa04619.png'),
+                          height: 69,
+                          width: 99,
+                        ),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -198,76 +180,35 @@ class Home_page extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   color: const Color(0xff3e3e40),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      height: 70,
-                      width: 100,
-                      color: AppColors.DarkGray,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Big_text(text: 'PENCIL'),
-                        Small_text(text: 'fghjfgjfjhjhjklhklhjlkhjlkhfgjfgj')
-                      ],
-                    )
-                  ],
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Community()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        child: const Image(
+                          image: AssetImage('events.png'),
+                          height: 69,
+                          width: 99,
+                        ),
+                        height: 70,
+                        width: 100,
+                        color: AppColors.DarkGray,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Big_text(text: 'Events'),
+                          Small_text(text: 'Catch Art Events')
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
-              // Container(
-              //   height: 100,
-              //   width: 400,
-              //   margin: const EdgeInsets.all(10),
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(30),
-              //     color: const Color(0xff3e3e40),
-              //   ),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //     children: [
-              //       Container(
-              //         height: 70,
-              //         width: 100,
-              //         color: AppColors.DarkGray,
-              //       ),
-              //       Column(
-              //         mainAxisAlignment: MainAxisAlignment.center,
-              //         children: [
-              //           Big_text(text: 'PENCIL'),
-              //           Small_text(text: 'fghjfgjfjhjhjklhklhjlkhjlkhfgjfgj')
-              //         ],
-              //       )
-              //     ],
-              //   ),
-              // ),
-              // Container(
-              //   height: 100,
-              //   width: 400,
-              //   margin: const EdgeInsets.all(10),
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(30),
-              //     color: const Color(0xff3e3e40),
-              //   ),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //     children: [
-              //       Container(
-              //         height: 70,
-              //         width: 100,
-              //         color: AppColors.DarkGray,
-              //       ),
-              //       Column(
-              //         mainAxisAlignment: MainAxisAlignment.center,
-              //         children: [
-              //           Big_text(text: 'PENCIL'),
-              //           Small_text(text: 'fghjfgjfjhjhjklhklhjlkhjlkhfgjfgj')
-              //         ],
-              //       )
-              //     ],
-              //   ),
-              // ),
             ],
           ),
         ),

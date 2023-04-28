@@ -1,4 +1,4 @@
-class  Products {
+class Products {
   int product_id;
   String name;
   num price;
@@ -14,12 +14,11 @@ class  Products {
   });
   factory Products.fromJson(Map<String, dynamic> parsedJson) {
     return Products(
-        product_id : parsedJson['product_id'],
+        product_id: parsedJson['id'],
         name: parsedJson['name'],
         price: parsedJson['price'],
-        image: parsedJson['image'],
-        description: parsedJson['description']
-    );
+        image: parsedJson['avatar'],
+        description: parsedJson['description']);
   }
   toJson() {
     Map<String, dynamic> json = {};
@@ -30,6 +29,7 @@ class  Products {
     json['description'] = description;
     return json;
   }
+
   static List productList(List product) {
     List products = [];
     for (var i = 0; i < product.length; i++) {
