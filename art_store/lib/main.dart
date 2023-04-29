@@ -1,7 +1,9 @@
 import 'package:art_store/screen/account.dart';
+import 'package:art_store/screen/editingprofile.dart';
 import 'package:art_store/screen/home.dart';
 import 'package:art_store/screen/otherfunctionality.dart';
 import 'package:art_store/screen/reset_password.dart';
+import 'package:art_store/screen/user_preferences.dart';
 import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ import 'package:art_store/screen/login.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await UserPreferences.init();
   runApp(const MyApp());
 }
 
@@ -27,12 +30,13 @@ class MyApp extends StatelessWidget {
         Base.id: (context) => const Base(),
         LoginScreen.id: (context) => const LoginScreen(),
         RegistrationScreen.id: (context) => const RegistrationScreen(),
-        Account.id: (context) => Account(),
+        ProfilePage.id: (context) => ProfilePage(),
         Home_page.id: (context) => const Home_page(
               name: '',
             ),
         ResetPassword.id: (context) => const ResetPassword(),
-        Otherfunctionality.id: (context) => const Otherfunctionality()
+        Otherfunctionality.id: (context) => const Otherfunctionality(),
+        EditProfile.id: (context) => EditProfile(),
       },
     );
   }

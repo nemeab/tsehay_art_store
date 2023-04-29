@@ -1,6 +1,5 @@
 // import 'package:art_store/screen/account.dart';
 import 'package:art_store/constants/constants.dart';
-import 'package:art_store/screen/registration.dart';
 import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';

@@ -27,7 +27,7 @@ class Otherfunctionality extends StatelessWidget {
                 Navigator.pushNamed(context, RegistrationScreen.id);
               }),
           const SizedBox(
-            width: 5,
+            width: 0,
           ),
           TextButton(
               child: const Text(

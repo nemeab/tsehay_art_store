@@ -14,6 +14,7 @@ class RegistrationScreen extends StatefulWidget {
 
 class RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
+  final formKey = GlobalKey<FormState>();
 
   bool showSpinner = false;
   late String fullName;
@@ -56,76 +57,91 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                 tag: 'logo',
                 child: SizedBox(
                   height: 200.0,
-                  // child: Image.asset('images/logo.png'),
                 ),
               ),
               const SizedBox(
                 height: 48.0,
               ),
-              TextField(
-                style: const TextStyle(color: AppColors.Gold),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  fullName = value;
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter your full Name',
-                  hintStyle: TextStyle(color: Color(0xffdfd38b)),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              TextFormField(
+                  key: formKey,
+                  style: const TextStyle(color: AppColors.Gold),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    fullName = value;
+                  },
+                  decoration: const InputDecoration(
+                    hintText: 'Enter your full Name',
+                    hintStyle: TextStyle(color: Color(0xffdfd38b)),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    suffixIcon: Icon(
+                      Icons.person,
+                      color: AppColors.Gold,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xffdfd38b), width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xffdfd38b), width: 2.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
                   ),
-                  suffixIcon: Icon(
-                    Icons.person,
-                    color: AppColors.Gold,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color(0xffdfd38b), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color(0xffdfd38b), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
+                  validator: (value) {
+                    if (value!.isEmpty ||
+                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                    } else {
+                      return null;
+                    }
+                    return 'Enter correct name';
+                  }),
               const SizedBox(
                 height: 8.0,
               ),
-              TextField(
-                style: const TextStyle(color: AppColors.Gold),
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter your email',
-                  hintStyle: TextStyle(color: Color(0xffdfd38b)),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              TextFormField(
+                  style: const TextStyle(color: AppColors.Gold),
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    email = value;
+                  },
+                  decoration: const InputDecoration(
+                    hintText: 'Enter your email',
+                    hintStyle: TextStyle(color: Color(0xffdfd38b)),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    suffixIcon: Icon(
+                      Icons.email,
+                      color: AppColors.Gold,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xffdfd38b), width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xffdfd38b), width: 2.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
                   ),
-                  suffixIcon: Icon(
-                    Icons.email,
-                    color: AppColors.Gold,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color(0xffdfd38b), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color(0xffdfd38b), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
+                  validator: (value) {
+                    if (value!.isEmpty ||
+                        !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
+                            .hasMatch(value)) {
+                    } else {
+                      return null;
+                    }
+                    return 'Enter correct name';
+                  }),
               const SizedBox(
                 height: 8.0,
               ),
@@ -138,7 +154,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                 },
                 decoration: InputDecoration(
                   hintStyle: const TextStyle(color: Color(0xffdfd38b)),
-                  hintText: 'Enter your new password.',
+                  hintText: 'Enter password.',
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 10.0, horizontal: 20.0),
                   border: const OutlineInputBorder(
@@ -211,6 +227,9 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                   elevation: 5.0,
                   child: MaterialButton(
                     onPressed: () async {
+                      // if (formKey.currentState!.validate()) {
+                      //   Navigator.pushNamed(context, Base.id);
+                      // }
                       setState(() {
                         showSpinner = true;
                       });

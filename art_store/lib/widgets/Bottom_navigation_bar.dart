@@ -20,7 +20,7 @@ class _BaseState extends State<Base> {
       name: 'natnael',
     ),
     const Community(),
-    Account(),
+    ProfilePage()
     // RepositoryProvider(
     //   create: (context) => Foodrepositery(),
     //   child: const Foo,
