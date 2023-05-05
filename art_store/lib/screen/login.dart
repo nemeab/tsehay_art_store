@@ -95,7 +95,7 @@ class LoginScreenState extends State<LoginScreen> {
                   password = value;
                 },
                 decoration: InputDecoration(
-                  hintStyle: const TextStyle(color: Color(0xffdfd38b)),
+                  hintStyle: const TextStyle(color: AppColors.Gold),
                   hintText: 'Enter Password.',
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 10.0, horizontal: 20.0),

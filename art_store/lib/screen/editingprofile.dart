@@ -5,7 +5,7 @@ import 'package:art_store/screen/profile.dart';
 import 'package:art_store/screen/user.dart';
 import 'package:art_store/screen/user_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:art_store/screen/appbar_widget.dart';
+// import 'package:art_store/screen/appbar_widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -26,11 +26,17 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: AppColors.LightGray,
+      appBar: AppBar(
+        backgroundColor: AppColors.LightGray,
+      ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 32),
         physics: const BouncingScrollPhysics(),
         children: [
+          const SizedBox(
+            height: 20,
+          ),
           profileWidget(
             imagepath: user.imagepath,
             isEdit: true,
@@ -54,10 +60,18 @@ class _EditProfileState extends State<EditProfile> {
             height: 12,
           ),
           TextField(
+            style: const TextStyle(color: AppColors.Gold),
             decoration: InputDecoration(
+              hintStyle: const TextStyle(color: AppColors.Gold),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xffdfd38b), width: 1.0),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.Gold)),
               labelText: 'Full Name',
+              labelStyle: TextStyle(color: AppColors.Gold),
               hintText: user.name,
             ),
             onChanged: (name) {
@@ -67,11 +81,20 @@ class _EditProfileState extends State<EditProfile> {
           const SizedBox(
             height: 24,
           ),
-          TextField(
+          TextFormField(
+            style: const TextStyle(color: AppColors.Gold),
             decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                hintStyle: const TextStyle(color: AppColors.Gold),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffdfd38b), width: 1.0),
+                ),
+                focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.Gold)),
                 labelText: 'Email',
+                labelStyle: TextStyle(color: AppColors.Gold),
                 hintText: user.email),
             onChanged: (email) {
               user = user.copy(email: email);
@@ -81,10 +104,18 @@ class _EditProfileState extends State<EditProfile> {
             height: 24,
           ),
           TextField(
+            style: const TextStyle(color: AppColors.Gold),
             decoration: InputDecoration(
+              hintStyle: const TextStyle(color: AppColors.Gold),
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xffdfd38b), width: 1.0),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.Gold)),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
               labelText: 'About',
+              labelStyle: TextStyle(color: AppColors.Gold),
               hintText: user.about,
             ),
             maxLines: 5,
@@ -98,6 +129,9 @@ class _EditProfileState extends State<EditProfile> {
                 UserPreferences.SetUser(user);
                 Navigator.of(context).pop();
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.Gold, // This is the background color
+              ),
               child: const Text('save'))
         ],
       ),
