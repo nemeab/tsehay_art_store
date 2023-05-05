@@ -1,5 +1,5 @@
 import 'package:art_store/constants/constants.dart';
-import 'package:art_store/screen/appbar_widget.dart';
+
 import 'package:art_store/screen/editingprofile.dart';
 import 'package:art_store/screen/login.dart';
 import 'package:art_store/screen/profile.dart';
@@ -29,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 onPressed: () {
                   Navigator.pushNamed(context, LoginScreen.id);
                 },
-                icon: Icon(Icons.logout))
+                icon: const Icon(Icons.logout))
           ],
         ),
         body: ListView(

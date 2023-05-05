@@ -7,6 +7,8 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:art_store/screen/otherfunctionality.dart';
 // import 'package:art_store/screen/reset_password.dart';
 
+import '../widgets/Bottom_navigation_bar.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 

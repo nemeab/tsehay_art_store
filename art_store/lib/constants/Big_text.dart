@@ -4,13 +4,13 @@ import 'constants.dart';
 class Big_text extends StatelessWidget {
   Color? color;
   final String text;
-  double size;
+  late double? size;
   TextOverflow overflow;
   Big_text(
       {super.key,
       this.color = const Color(0xffdfd18a),
       required this.text,
-      this.size = 20,
+      this.size,
       this.overflow = TextOverflow.ellipsis});
 
   @override
@@ -22,7 +22,7 @@ class Big_text extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontWeight: FontWeight.w400,
-        fontSize: size,
+        fontSize: size = 20,
       ),
     );
   }
