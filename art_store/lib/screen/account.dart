@@ -1,104 +1,100 @@
+import 'package:art_store/constants/constants.dart';
+
+import 'package:art_store/screen/editingprofile.dart';
 import 'package:art_store/screen/login.dart';
+import 'package:art_store/screen/profile.dart';
+import 'package:art_store/screen/user_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:art_store/screen/user.dart';
 
-class Account extends StatefulWidget {
-  Account({super.key});
-  static const String id = 'account_screen';
-
+class ProfilePage extends StatefulWidget {
+  static const id = 'account_screen';
   @override
-  State<Account> createState() => _AccountState();
+  _ProfilePageState createState() => _ProfilePageState();
 }
 
-class _AccountState extends State<Account> {
-  final _auth = FirebaseAuth.instance;
-
-  late User loggedInUser;
-
-  @override
-  void initState() {
-    super.initState();
-
-    getCurrentUser();
-  }
-
-  void getCurrentUser() async {
-    try {
-      final User = await _auth.currentUser;
-      if (User != null) {
-        loggedInUser = User;
-        print(loggedInUser.email);
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        leading: null,
-        actions: <Widget>[
-          IconButton(
-              onPressed: () {
-                _auth.signOut();
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.logout))
-        ],
-      ),
-      body: Center(
-        child: SafeArea(
-          child: Container(
-            width: double.infinity,
-            color: Colors.black,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const CircleAvatar(
-                    backgroundColor: Color(0xffdfd38b),
-                    radius: 50,
-                    backgroundImage: AssetImage('images/user.png')),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  'Natnel Debebe',
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffdfd38b)),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  width: 130,
-                  height: 30,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xffdfd38b),
-                      foregroundColor: Colors.black,
-                    ),
-                    onPressed: () {},
-                    child: Row(
-                      children: const [
-                        Text(
-                          '+ Add your art',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
+    final user = UserPreferences.getUser();
+
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: AppColors.LightGray,
+        appBar: AppBar(
+          backgroundColor: AppColors.LightGray,
+          actions: [
+            IconButton(
+                color: AppColors.Gold,
+                onPressed: () {
+                  Navigator.pushNamed(context, LoginScreen.id);
+                },
+                icon: const Icon(Icons.logout))
+          ],
+        ),
+        body: ListView(
+          physics: const BouncingScrollPhysics(),
+          children: [
+            const SizedBox(
+              height: 24,
             ),
-          ),
+            profileWidget(
+              imagepath: user.imagepath,
+              onClicked: () async {
+                await Navigator.pushNamed(context, EditProfile.id);
+                setState(() {});
+              },
+              isEdit: true,
+            ),
+            const SizedBox(height: 24),
+            buildName(user),
+            const SizedBox(
+              height: 25,
+            ),
+            buildAbout(user),
+          ],
         ),
       ),
     );
   }
+
+  Widget buildName(User user) => Column(
+        children: [
+          Text(
+            user.name,
+            style: const TextStyle(
+                color: AppColors.Gold,
+                fontWeight: FontWeight.bold,
+                fontSize: 24),
+          ),
+          const SizedBox(
+            height: 4,
+          ),
+          Text(
+            user.email,
+            style: const TextStyle(color: AppColors.Gold),
+          )
+        ],
+      );
+  Widget buildAbout(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 48),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Bio',
+              style: TextStyle(
+                  color: AppColors.Gold,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              user.about,
+              style: const TextStyle(
+                  color: AppColors.Gold, fontSize: 16, height: 1.4),
+            )
+          ],
+        ),
+      );
 }

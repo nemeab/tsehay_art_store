@@ -1,4 +1,6 @@
-import 'package:art_store/screen/account.dart';
+import 'package:art_store/constants/constants.dart';
+import 'package:art_store/screen/home.dart';
+import 'package:art_store/widgets/Bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -12,17 +14,37 @@ class RegistrationScreen extends StatefulWidget {
 
 class RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
+  final formKey = GlobalKey<FormState>();
 
   bool showSpinner = false;
   late String fullName;
   late String email;
   late String password;
   late String confirmPassword;
+  bool _obscureText = true;
+
+  void _passwordhide() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
+  void signup() async {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (BuildContext context) => Home_page(
+          name: fullName,
+        ),
+      ),
+      (Route<dynamic> route) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: true,
+      backgroundColor: AppColors.LightGray,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -35,89 +57,122 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                 tag: 'logo',
                 child: SizedBox(
                   height: 200.0,
-                  // child: Image.asset('images/logo.png'),
                 ),
               ),
               const SizedBox(
                 height: 48.0,
               ),
-              TextField(
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  fullName = value;
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter your full Name',
-                  hintStyle: TextStyle(color: Color(0xffdfd38b)),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              TextFormField(
+                  key: formKey,
+                  style: const TextStyle(color: AppColors.Gold),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    fullName = value;
+                  },
+                  decoration: const InputDecoration(
+                    hintText: 'Enter your full Name',
+                    hintStyle: TextStyle(color: Color(0xffdfd38b)),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    suffixIcon: Icon(
+                      Icons.person,
+                      color: AppColors.Gold,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xffdfd38b), width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xffdfd38b), width: 2.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color(0xffdfd38b), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color(0xffdfd38b), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
+                  validator: (value) {
+                    if (value!.isEmpty ||
+                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                    } else {
+                      return null;
+                    }
+                    return 'Enter correct name';
+                  }),
               const SizedBox(
                 height: 8.0,
               ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter your email',
-                  hintStyle: TextStyle(color: Color(0xffdfd38b)),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              TextFormField(
+                  style: const TextStyle(color: AppColors.Gold),
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    email = value;
+                  },
+                  decoration: const InputDecoration(
+                    hintText: 'Enter your email',
+                    hintStyle: TextStyle(color: Color(0xffdfd38b)),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    suffixIcon: Icon(
+                      Icons.email,
+                      color: AppColors.Gold,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xffdfd38b), width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xffdfd38b), width: 2.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color(0xffdfd38b), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color(0xffdfd38b), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
+                  validator: (value) {
+                    if (value!.isEmpty ||
+                        !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
+                            .hasMatch(value)) {
+                    } else {
+                      return null;
+                    }
+                    return 'Enter correct name';
+                  }),
               const SizedBox(
                 height: 8.0,
               ),
-              TextField(
-                obscureText: true,
+              TextFormField(
+                obscureText: _obscureText,
+                style: const TextStyle(color: AppColors.Gold),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   password = value;
                 },
-                decoration: const InputDecoration(
-                  hintStyle: TextStyle(color: Color(0xffdfd38b)),
-                  hintText: 'Enter your new password.',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
+                decoration: InputDecoration(
+                  hintStyle: const TextStyle(color: Color(0xffdfd38b)),
+                  hintText: 'Enter password.',
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 20.0),
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
-                  enabledBorder: OutlineInputBorder(
+                  suffixIcon: IconButton(
+                    color: AppColors.Gold,
+                    icon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: _passwordhide,
+                  ),
+                  enabledBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffdfd38b), width: 1.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffdfd38b), width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
@@ -128,25 +183,33 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                 height: 8.0,
               ),
               TextField(
-                obscureText: true,
+                obscureText: _obscureText,
+                style: const TextStyle(color: AppColors.Gold),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   confirmPassword = value;
                 },
-                decoration: const InputDecoration(
-                  hintStyle: TextStyle(color: Color(0xffdfd38b)),
+                decoration: InputDecoration(
+                  hintStyle: const TextStyle(color: Color(0xffdfd38b)),
                   hintText: 'Confirm you password.',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 20.0),
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
-                  enabledBorder: OutlineInputBorder(
+                  suffixIcon: IconButton(
+                    color: AppColors.Gold,
+                    icon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: _passwordhide,
+                  ),
+                  enabledBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffdfd38b), width: 1.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffdfd38b), width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
@@ -164,6 +227,9 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                   elevation: 5.0,
                   child: MaterialButton(
                     onPressed: () async {
+                      // if (formKey.currentState!.validate()) {
+                      //   Navigator.pushNamed(context, Base.id);
+                      // }
                       setState(() {
                         showSpinner = true;
                       });
@@ -174,7 +240,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                           password: password,
                         );
                         if (newuser != null) {
-                          Navigator.pushNamed(context, Account.id);
+                          Navigator.pushNamed(context, Base.id);
                         }
                         setState(() {
                           showSpinner = false;
