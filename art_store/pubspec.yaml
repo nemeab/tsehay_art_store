@@ -53,6 +53,7 @@ dependencies:
   bloc: ^8.1.1
   equatable: ^2.0.5
   sqflite: ^2.2.6
+  google_fonts: ^4.0.4
   
 
 
@@ -82,7 +83,7 @@ flutter:
   assets:
     - images/
 
-   
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

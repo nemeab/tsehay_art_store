@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:art_store/screen/registration.dart';
 import 'package:art_store/screen/login.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:art_store/screen/welcome.dart';
 import 'bloc/art_bloc.dart';
 
 void main() async {
@@ -31,8 +31,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Tsehay Art Store',
         theme: ThemeData(),
-        initialRoute: LoginScreen.id,
+        initialRoute: WelcomeScreenn.id,
         routes: {
+          WelcomeScreenn.id: (context) => WelcomeScreenn(),
           Base.id: (context) => const Base(),
           LoginScreen.id: (context) => const LoginScreen(),
           RegistrationScreen.id: (context) => const RegistrationScreen(),
