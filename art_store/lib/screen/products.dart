@@ -31,7 +31,12 @@ class Product_screen extends StatelessWidget {
           //   );
           // }
           if (state is ArtLoadingState) {
-            return const Center(child: CircularProgressIndicator());
+            return Container(
+                color: AppColors.DarkGray,
+                child: const Center(
+                    child: CircularProgressIndicator(
+                  color: AppColors.Gold,
+                )));
           } else if (state is ArtFailState) {
             return Text(state.message);
           } else if (state is ArtSuccessState) {

@@ -71,7 +71,7 @@ class _EditProfileState extends State<EditProfile> {
               focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: AppColors.Gold)),
               labelText: 'Full Name',
-              labelStyle: TextStyle(color: AppColors.Gold),
+              labelStyle: const TextStyle(color: AppColors.Gold),
               hintText: user.name,
             ),
             onChanged: (name) {
@@ -94,7 +94,7 @@ class _EditProfileState extends State<EditProfile> {
                 focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.Gold)),
                 labelText: 'Email',
-                labelStyle: TextStyle(color: AppColors.Gold),
+                labelStyle: const TextStyle(color: AppColors.Gold),
                 hintText: user.email),
             onChanged: (email) {
               user = user.copy(email: email);
@@ -115,7 +115,7 @@ class _EditProfileState extends State<EditProfile> {
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
               labelText: 'About',
-              labelStyle: TextStyle(color: AppColors.Gold),
+              labelStyle: const TextStyle(color: AppColors.Gold),
               hintText: user.about,
             ),
             maxLines: 5,
